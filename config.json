@@ -3,10 +3,10 @@
     "id": "fhir.ph.ereferral",
     "name": "PH eReferral",
     "version": "0.1.0",
-    "link": "https://fhir.doh.gov.ph/pheref/ImplementationGuide/fhir.ph.ereferral",
+    "link": "https://build.fhir.org/ig/niccoreyes/ph-ereferral/branches/main/en/ImplementationGuide/fhir.ph.ereferral",
     "package_archive_path": "lib/ph_ereferral_test_kit/igs/0.1.0.tgz",
-    "cs_profile_url": "https://fhir.doh.gov.ph/pheref/CapabilityStatement/ph-ereferral-server",
-    "cs_version_specific_url": "https://fhir.doh.gov.ph/pheref/CapabilityStatement/ph-ereferral-server"
+    "cs_profile_url": "https://build.fhir.org/ig/niccoreyes/ph-ereferral/branches/main/en/CapabilityStatement/ph-ereferral-server",
+    "cs_version_specific_url": "https://build.fhir.org/ig/niccoreyes/ph-ereferral/branches/main/en/CapabilityStatement/ph-ereferral-server"
   },
   "suite": {
     "title": "PH eReferral",
@@ -21,15 +21,15 @@
     "links": [
       {
         "label": "Report Issue",
-        "url": "https://github.com/UP-Manila-SILab/ph-ereferral-test-kit/issues"
+        "url": "https://github.com/projkov/ph-ereferral-inferno-test-kit/issues"
       },
       {
         "label": "Source Code",
-        "url": "https://github.com/UP-Manila-SILab/ph-ereferral-test-kit"
+        "url": "https://github.com/projkov/ph-ereferral-inferno-test-kit"
       },
       {
         "label": "Implementation Guide",
-        "url": "https://fhir.doh.gov.ph/pheref/index.html"
+        "url": "https://build.fhir.org/ig/niccoreyes/ph-ereferral/branches/main/en/index.html"
       }
     ]
   },

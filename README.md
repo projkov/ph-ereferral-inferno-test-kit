@@ -1,10 +1,10 @@
 # PH eReferral Test Kit
 
-An [Inferno](https://inferno-framework.github.io/) test kit for testing FHIR server conformance to the [PH eReferral Implementation Guide](https://fhir.doh.gov.ph/pheref/ImplementationGuide/fhir.ph.ereferral).
+An [Inferno](https://inferno-framework.github.io/) test kit for testing FHIR server conformance to the [PH eReferral Implementation Guide](https://build.fhir.org/ig/niccoreyes/ph-ereferral/branches/main/en/index.html).
 
 - **IG package ID:** `fhir.ph.ereferral`
 - **IG version:** `0.1.0`
-- **CapabilityStatement:** `https://fhir.doh.gov.ph/pheref/CapabilityStatement/ph-ereferral-server`
+- **CapabilityStatement:** `https://build.fhir.org/ig/niccoreyes/ph-ereferral/branches/main/en/CapabilityStatement/ph-ereferral-server`
 - **Terminology server:** `https://tx.fhir.org/r4`
 
 ## What is tested
@@ -125,9 +125,9 @@ If you update the IG package or `config.json`, regenerate the test suite:
 
 ## Links
 
-- [Report an issue](https://github.com/UP-Manila-SILab/ph-ereferral-test-kit/issues)
-- [Source code](https://github.com/UP-Manila-SILab/ph-ereferral-test-kit)
-- [PH eReferral Implementation Guide](https://fhir.doh.gov.ph/pheref/index.html)
+- [Report an issue](https://github.com/projkov/ph-ereferral-inferno-test-kit/issues)
+- [Source code](https://github.com/projkov/ph-ereferral-inferno-test-kit)
+- [PH eReferral Implementation Guide](https://build.fhir.org/ig/niccoreyes/ph-ereferral/branches/main/en/index.html)
 
 ## Based on
 

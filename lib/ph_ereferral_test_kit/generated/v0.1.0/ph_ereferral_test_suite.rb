@@ -5,22 +5,12 @@ require 'inferno/dsl/oauth_credentials'
 require 'inferno_suite_generator/utils/helpers'
 require_relative '../../version'
 
-require_relative 'patient_group'
-require_relative 'service_request_group'
-require_relative 'encounter_group'
-require_relative 'ereferral_condition_group'
-require_relative 'ereferral_observation_group'
-require_relative 'procedure_group'
-require_relative 'task_group'
-require_relative 'provenance_group'
-require_relative 'practitioner_role_group'
-
 module PHeReferralTestKit
   module PHeReferralV010
     class PHeReferralTestSuite < Inferno::TestSuite
       title 'PH eReferral v0.1.0'
       description %(
-        The PH eReferral Test Kit tests systems for their conformance to the [PH eReferral](https://fhir.doh.gov.ph/pheref/ImplementationGuide/fhir.ph.ereferral).
+        The PH eReferral Test Kit tests systems for their conformance to the [PH eReferral](https://build.fhir.org/ig/niccoreyes/ph-ereferral/branches/main/en/ImplementationGuide/fhir.ph.ereferral).
 
         HL7® FHIR® resources are validated with the Java validator using
         https://tx.fhir.org/r4 as the terminology server.
@@ -53,20 +43,24 @@ module PHeReferralTestKit
         exclude_message do |message|
           Helpers.is_message_exist_in_list(message_filters, message.message)
         end
+
+        perform_additional_validation do |resource, _profile_url|
+          ProvenanceValidator.validate(resource) if resource.instance_of?(FHIR::Provenance)
+        end
       end
 
       links [
         {
           label: 'Report Issue',
-          url: 'https://github.com/UP-Manila-SILab/ph-ereferral-test-kit/issues'
+          url: 'https://github.com/projkov/ph-ereferral-inferno-test-kit/issues'
         },
         {
           label: 'Source Code',
-          url: 'https://github.com/UP-Manila-SILab/ph-ereferral-test-kit'
+          url: 'https://github.com/projkov/ph-ereferral-inferno-test-kit'
         },
         {
           label: 'Implementation Guide',
-          url: 'https://fhir.doh.gov.ph/pheref/index.html'
+          url: 'https://build.fhir.org/ig/niccoreyes/ph-ereferral/branches/main/en/index.html'
         }
       ]
 
@@ -96,24 +90,6 @@ module PHeReferralTestKit
       group do
         title 'PH eReferral FHIR API'
         id :ph_ereferral_v010_fhir_api
-
-        group from: :ph_ereferral_v010_patient
-
-        group from: :ph_ereferral_v010_service_request
-
-        group from: :ph_ereferral_v010_encounter
-
-        group from: :ph_ereferral_v010_ereferral_condition
-
-        group from: :ph_ereferral_v010_ereferral_observation
-
-        group from: :ph_ereferral_v010_procedure
-
-        group from: :ph_ereferral_v010_task
-
-        group from: :ph_ereferral_v010_provenance
-
-        group from: :ph_ereferral_v010_practitioner_role
       end
     end
   end

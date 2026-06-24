@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['pavel.r@beda.software, ilya@beda.software']
   spec.summary       = 'PH eReferral Inferno test kit'
   spec.description   = 'PH eReferral Inferno test kit'
-  spec.homepage      = 'https://github.com/UP-Manila-SILab/ph-ereferral-test-kit'
+  spec.homepage      = 'https://github.com/projkov/ph-ereferral-inferno-test-kit'
   spec.license       = 'Apache-2.0'
   spec.add_dependency 'inferno_core', '>= 1.0.6'
   spec.add_dependency 'smart_app_launch_test_kit', '>= 0.4.0'
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'webmock', '~> 3.11'
   spec.required_ruby_version = Gem::Requirement.new('>= 3.3.6')
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/UP-Manila-SILab/ph-ereferral-test-kit'
+  spec.metadata['source_code_uri'] = 'https://github.com/projkov/ph-ereferral-inferno-test-kit'
   spec.metadata['rubygems_mfa_required'] = 'true'
   spec.files = [
     Dir['lib/**/*.rb'],
