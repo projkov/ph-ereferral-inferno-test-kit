@@ -20,7 +20,7 @@ This test verifies that the server supports searching by reference using
 the form `practitioner=[id]` as well as `practitioner=Practitioner/[id]`. The two
 different forms are expected to return the same number of results. PH eReferral requires that both forms are supported by PH eReferral responders.
 
-[PH eReferral Server CapabilityStatement](https://fhir.doh.gov.ph/pheref/CapabilityStatement/ph-ereferral-server)
+[PH eReferral Server CapabilityStatement](https://build.fhir.org/ig/niccoreyes/ph-ereferral/branches/main/en/CapabilityStatement/ph-ereferral-server)
 
       )
 

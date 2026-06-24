@@ -5,6 +5,16 @@ require 'inferno/dsl/oauth_credentials'
 require 'inferno_suite_generator/utils/helpers'
 require_relative '../../version'
 
+require_relative 'patient_group'
+require_relative 'service_request_group'
+require_relative 'encounter_group'
+require_relative 'ereferral_condition_group'
+require_relative 'ereferral_observation_group'
+require_relative 'procedure_group'
+require_relative 'task_group'
+require_relative 'provenance_group'
+require_relative 'practitioner_role_group'
+
 module PHeReferralTestKit
   module PHeReferralV010
     class PHeReferralTestSuite < Inferno::TestSuite
@@ -42,10 +52,6 @@ module PHeReferralTestKit
 
         exclude_message do |message|
           Helpers.is_message_exist_in_list(message_filters, message.message)
-        end
-
-        perform_additional_validation do |resource, _profile_url|
-          ProvenanceValidator.validate(resource) if resource.instance_of?(FHIR::Provenance)
         end
       end
 
@@ -90,6 +96,24 @@ module PHeReferralTestKit
       group do
         title 'PH eReferral FHIR API'
         id :ph_ereferral_v010_fhir_api
+
+        group from: :ph_ereferral_v010_patient
+
+        group from: :ph_ereferral_v010_service_request
+
+        group from: :ph_ereferral_v010_encounter
+
+        group from: :ph_ereferral_v010_ereferral_condition
+
+        group from: :ph_ereferral_v010_ereferral_observation
+
+        group from: :ph_ereferral_v010_procedure
+
+        group from: :ph_ereferral_v010_task
+
+        group from: :ph_ereferral_v010_provenance
+
+        group from: :ph_ereferral_v010_practitioner_role
       end
     end
   end

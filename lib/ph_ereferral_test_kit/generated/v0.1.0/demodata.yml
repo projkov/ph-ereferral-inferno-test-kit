@@ -940,4 +940,14 @@
 :patch_body_list:
   :FHIRPATHPatchJson: {}
   :JSONPatch: {}
-:resource_types_to_search: []
+:resource_types_to_search:
+- ServiceRequest
+- Patient
+- Encounter
+- PractitionerRole
+- Condition
+- Observation
+- Procedure
+- MedicationAdministration
+- Immunization
+- Provenance
