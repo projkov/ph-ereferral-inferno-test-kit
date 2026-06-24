@@ -1,0 +1,269 @@
+---
+:name: ereferral_task
+:class_name: EreferralTaskSequence
+:version: v0.1.0
+:reformatted_version: v010
+:resource: Task
+:profile_url: https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-task
+:profile_name: EReferral Task
+:profile_version: 0.1.0
+:title: EReferral Task
+:short_description: Verify support for the server capabilities required by the EReferral
+  Task.
+:interactions:
+- :code: read
+  :expectation: SHALL
+- :code: search-type
+  :expectation: SHALL
+:operations: []
+:searches:
+- :names:
+  - patient
+  :expectation: SHALL
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+- :names:
+  - status
+  :expectation: SHALL
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+- :names:
+  - focus
+  :expectation: SHALL
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+- :names:
+  - requester
+  :expectation: SHOULD
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+- :names:
+  - owner
+  :expectation: SHOULD
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+:search_definitions:
+  :patient:
+    :paths:
+    - for
+    :full_paths:
+    - Task.for
+    :comparators: {}
+    :values: []
+    :type: Reference
+    :contains_multiple: false
+    :target_resource: Patient
+  :status:
+    :paths:
+    - status
+    :full_paths:
+    - Task.status
+    :comparators: {}
+    :values:
+    - draft
+    - requested
+    - received
+    - accepted
+    - rejected
+    - ready
+    - cancelled
+    - in-progress
+    - on-hold
+    - failed
+    - completed
+    - entered-in-error
+    :type: code
+    :contains_multiple: false
+  :focus:
+    :paths:
+    - focus
+    :full_paths:
+    - Task.focus
+    :comparators: {}
+    :values: []
+    :type: Reference
+    :contains_multiple: false
+    :target_resource: Account
+  :requester:
+    :paths:
+    - requester
+    :full_paths:
+    - Task.requester
+    :comparators: {}
+    :values: []
+    :type: Reference
+    :contains_multiple: false
+    :target_resource: Practitioner
+  :owner:
+    :paths:
+    - owner
+    :full_paths:
+    - Task.owner
+    :comparators: {}
+    :values: []
+    :type: Reference
+    :contains_multiple: false
+    :target_resource: Practitioner
+:include_params: []
+:revincludes: []
+:required_concepts: []
+:must_supports:
+  :extensions: []
+  :slices:
+  - :slice_id: Task.input.value[x]:valueCodeableConcept
+    :slice_name: valueCodeableConcept
+    :path: input.value[x]
+    :discriminator:
+      :type: type
+      :code: CodeableConcept
+  - :slice_id: Task.output.value[x]:valueCodeableConcept
+    :slice_name: valueCodeableConcept
+    :path: output.value[x]
+    :discriminator:
+      :type: type
+      :code: CodeableConcept
+  :elements:
+  - :path: status
+  - :path: statusReason
+  - :path: statusReason.coding
+  - :path: statusReason.text
+  - :path: businessStatus
+  - :path: businessStatus.coding
+  - :path: businessStatus.text
+  - :path: intent
+    :fixed_value: order
+  - :path: code
+  - :path: code.coding
+  - :path: code.text
+  - :path: focus
+    :types:
+    - Reference
+    :target_profiles:
+    - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-service-request
+  - :path: for
+    :types:
+    - Reference
+    :target_profiles:
+    - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-patient
+  - :path: executionPeriod
+  - :path: authoredOn
+  - :path: lastModified
+  - :path: requester
+    :types:
+    - Reference
+  - :path: performerType
+  - :path: performerType.coding
+  - :path: performerType.text
+  - :path: owner
+    :types:
+    - Reference
+  - :path: reasonCode
+  - :path: reasonCode.coding
+  - :path: reasonCode.text
+  - :path: note
+  - :path: input.type
+  - :path: input.type.coding
+  - :path: input.type.text
+  - :path: input.value[x]:valueCodeableConcept.coding
+  - :path: input.value[x]:valueCodeableConcept.text
+  - :path: output.type
+  - :path: output.type.coding
+  - :path: output.type.text
+  - :path: output.value[x]:valueCodeableConcept.coding
+  - :path: output.value[x]:valueCodeableConcept.text
+:mandatory_elements:
+- Task.status
+- Task.intent
+- Task.focus
+- Task.requester
+- Task.input.type
+- Task.input.value[x]
+- Task.output.type
+- Task.output.value[x]
+:bindings:
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/task-status
+  :path: status
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/request-priority
+  :path: priority
+:references:
+- :path: Task.basedOn
+  :profiles:
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
+- :path: Task.partOf
+  :profiles:
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-task
+- :path: Task.focus
+  :profiles:
+  - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-service-request
+  :resource_types:
+  - ServiceRequest
+- :path: Task.for
+  :profiles:
+  - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-patient
+  :resource_types:
+  - Patient
+- :path: Task.encounter
+  :profiles:
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-encounter
+- :path: Task.requester
+  :profiles:
+  - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-practitioner-role
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-practitioner
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-organization
+  :resource_types:
+  - PractitionerRole
+- :path: Task.owner
+  :profiles:
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-practitioner
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-practitionerrole
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-organization
+- :path: Task.location
+  :profiles:
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-location
+- :path: Task.reasonReference
+  :profiles:
+  - http://hl7.org/fhir/StructureDefinition/Resource|4.0.1
+- :path: Task.insurance
+  :profiles:
+  - http://hl7.org/fhir/StructureDefinition/Coverage|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/ClaimResponse|4.0.1
+- :path: Task.relevantHistory
+  :profiles:
+  - http://hl7.org/fhir/StructureDefinition/Provenance|4.0.1
+- :path: Task.restriction.recipient
+  :profiles:
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-patient
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-practitioner
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-practitionerrole
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-relatedperson
+  - http://hl7.org/fhir/StructureDefinition/Group
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-organization
+:tests:
+- :id: ph_ereferral_v010_task_patient_search_test
+  :file_name: task_patient_search_test.rb
+- :id: ph_ereferral_v010_task_status_search_test
+  :file_name: task_status_search_test.rb
+- :id: ph_ereferral_v010_task_focus_search_test
+  :file_name: task_focus_search_test.rb
+- :id: ph_ereferral_v010_task_requester_search_test
+  :file_name: task_requester_search_test.rb
+- :id: ph_ereferral_v010_task_owner_search_test
+  :file_name: task_owner_search_test.rb
+- :id: ph_ereferral_v010_task_read_test
+  :file_name: task_read_test.rb
+- :id: ph_ereferral_v010_task_validation_test
+  :file_name: task_validation_test.rb
+- :id: ph_ereferral_v010_task_must_support_test
+  :file_name: task_must_support_test.rb
+- :id: ph_ereferral_v010_task_reference_resolution_test
+  :file_name: task_reference_resolution_test.rb
+:id: ph_ereferral_v010_task
+:file_name: task_group.rb
+:delayed_references:
+- :path: requester
+  :resources:
+  - PractitionerRole

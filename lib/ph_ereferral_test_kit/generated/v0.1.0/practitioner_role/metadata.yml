@@ -1,0 +1,170 @@
+---
+:name: ereferral_practitioner_role
+:class_name: EreferralPractitionerRoleSequence
+:version: v0.1.0
+:reformatted_version: v010
+:resource: PractitionerRole
+:profile_url: https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-practitioner-role
+:profile_name: PH eReferral PractitionerRole
+:profile_version: 0.1.0
+:title: PractitionerRole
+:short_description: Verify support for the server capabilities required by the PH
+  eReferral PractitionerRole.
+:interactions:
+- :code: read
+  :expectation: SHALL
+- :code: search-type
+  :expectation: SHALL
+:operations: []
+:searches:
+- :names:
+  - identifier
+  :expectation: SHOULD
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+- :names:
+  - practitioner
+  :expectation: SHALL
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+- :names:
+  - organization
+  :expectation: SHALL
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+- :names:
+  - role
+  :expectation: MAY
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+:search_definitions:
+  :identifier:
+    :paths:
+    - identifier
+    :full_paths:
+    - PractitionerRole.identifier
+    :comparators: {}
+    :values: []
+    :type: Identifier
+    :contains_multiple: true
+  :practitioner:
+    :paths:
+    - practitioner
+    :full_paths:
+    - PractitionerRole.practitioner
+    :comparators: {}
+    :values: []
+    :type: Reference
+    :contains_multiple: false
+    :target_resource: Practitioner
+  :organization:
+    :paths:
+    - organization
+    :full_paths:
+    - PractitionerRole.organization
+    :comparators: {}
+    :values: []
+    :type: Reference
+    :contains_multiple: false
+    :target_resource: Organization
+  :role:
+    :paths:
+    - code
+    :full_paths:
+    - PractitionerRole.code
+    :comparators: {}
+    :values:
+    - '158965000'
+    - '265937000'
+    - '309453006'
+    - '46255001'
+    - '386629007'
+    - '159282002'
+    - '106289002'
+    - '4162009'
+    - '28229004'
+    - '3253'
+    - PCW
+    :type: CodeableConcept
+    :contains_multiple: true
+:include_params: []
+:revincludes: []
+:required_concepts:
+- code
+:must_supports:
+  :extensions: []
+  :slices: []
+  :elements:
+  - :path: identifier
+  - :path: practitioner
+    :types:
+    - Reference
+    :target_profiles:
+    - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-practitioner
+  - :path: organization
+    :types:
+    - Reference
+    :target_profiles:
+    - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-organization
+  - :path: code
+  - :path: code.coding
+  - :path: code.text
+  - :path: specialty
+  - :path: telecom
+  - :path: telecom.system
+  - :path: telecom.value
+:mandatory_elements:
+- PractitionerRole.notAvailable.description
+:bindings:
+- :type: CodeableConcept
+  :strength: required
+  :system: https://www.fhir.doh.gov.ph/pheref/ValueSet/practitioner-role
+  :path: code
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/contact-point-system
+  :path: telecom.system
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/contact-point-use
+  :path: telecom.use
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/days-of-week
+  :path: availableTime.daysOfWeek
+:references:
+- :path: PractitionerRole.practitioner
+  :profiles:
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-practitioner
+- :path: PractitionerRole.organization
+  :profiles:
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-organization
+- :path: PractitionerRole.location
+  :profiles:
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-location
+- :path: PractitionerRole.healthcareService
+  :profiles:
+  - http://hl7.org/fhir/StructureDefinition/HealthcareService|4.0.1
+- :path: PractitionerRole.endpoint
+  :profiles:
+  - http://hl7.org/fhir/StructureDefinition/Endpoint|4.0.1
+:tests:
+- :id: ph_ereferral_v010_practitioner_role_read_test
+  :file_name: practitioner_role_read_test.rb
+- :id: ph_ereferral_v010_practitioner_role_identifier_search_test
+  :file_name: practitioner_role_identifier_search_test.rb
+- :id: ph_ereferral_v010_practitioner_role_practitioner_search_test
+  :file_name: practitioner_role_practitioner_search_test.rb
+- :id: ph_ereferral_v010_practitioner_role_organization_search_test
+  :file_name: practitioner_role_organization_search_test.rb
+- :id: ph_ereferral_v010_practitioner_role_role_search_test
+  :file_name: practitioner_role_role_search_test.rb
+- :id: ph_ereferral_v010_practitioner_role_validation_test
+  :file_name: practitioner_role_validation_test.rb
+- :id: ph_ereferral_v010_practitioner_role_must_support_test
+  :file_name: practitioner_role_must_support_test.rb
+- :id: ph_ereferral_v010_practitioner_role_reference_resolution_test
+  :file_name: practitioner_role_reference_resolution_test.rb
+:id: ph_ereferral_v010_practitioner_role
+:file_name: practitioner_role_group.rb
+:delayed_references: []

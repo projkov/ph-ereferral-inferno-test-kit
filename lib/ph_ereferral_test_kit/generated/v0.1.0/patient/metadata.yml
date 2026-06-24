@@ -1,0 +1,195 @@
+---
+:name: ereferral_patient
+:class_name: EreferralPatientSequence
+:version: v0.1.0
+:reformatted_version: v010
+:resource: Patient
+:profile_url: https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-patient
+:profile_name: ERefPatient
+:profile_version: 0.1.0
+:title: ERefPatient
+:short_description: Verify support for the server capabilities required by the ERefPatient.
+:interactions:
+- :code: read
+  :expectation: SHALL
+- :code: search-type
+  :expectation: SHALL
+:operations: []
+:searches:
+- :names:
+  - identifier
+  :expectation: SHALL
+  :names_not_must_support_or_mandatory:
+  - identifier
+  :must_support_or_mandatory: false
+- :names:
+  - name
+  :expectation: SHOULD
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+- :names:
+  - birthdate
+  :expectation: MAY
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+- :names:
+  - gender
+  :expectation: MAY
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+:search_definitions:
+  :identifier:
+    :paths:
+    - identifier
+    :full_paths:
+    - Patient.identifier
+    :comparators: {}
+    :values: []
+    :type: Identifier
+    :contains_multiple: true
+  :name:
+    :paths:
+    - name
+    :full_paths:
+    - Patient.name
+    :comparators: {}
+    :values: []
+    :type: HumanName
+    :contains_multiple: true
+  :birthdate:
+    :paths:
+    - birthDate
+    :full_paths:
+    - Patient.birthDate
+    :comparators:
+      :eq: MAY
+      :ne: MAY
+      :gt: MAY
+      :ge: MAY
+      :lt: MAY
+      :le: MAY
+      :sa: MAY
+      :eb: MAY
+      :ap: MAY
+    :values: []
+    :type: date
+    :contains_multiple: false
+  :gender:
+    :paths:
+    - gender
+    :full_paths:
+    - Patient.gender
+    :comparators: {}
+    :values: []
+    :type: code
+    :contains_multiple: false
+:include_params: []
+:revincludes: []
+:required_concepts:
+- maritalStatus
+- contact.relationship
+:must_supports:
+  :extensions: []
+  :slices:
+  - :slice_id: Patient.identifier:PHCorePhilHealthID
+    :slice_name: PHCorePhilHealthID
+    :path: identifier
+    :discriminator:
+      :type: value
+      :values: []
+  - :slice_id: Patient.identifier:PHCorePhilSysID
+    :slice_name: PHCorePhilSysID
+    :path: identifier
+    :discriminator:
+      :type: value
+      :values: []
+  :elements:
+  - :path: name
+  - :path: telecom
+  - :path: gender
+  - :path: birthDate
+  - :path: address
+  - :path: maritalStatus
+  - :path: maritalStatus.coding
+  - :path: maritalStatus.text
+  - :path: contact.relationship
+  - :path: contact.relationship.coding
+  - :path: contact.relationship.text
+  - :path: contact.name
+  - :path: contact.telecom
+  - :path: contact.address
+  - :path: communication.language
+  - :path: communication.language.coding
+  - :path: communication.language.text
+:mandatory_elements:
+- Patient.name
+- Patient.gender
+- Patient.birthDate
+- Patient.contact.relationship
+- Patient.contact.name
+- Patient.communication.language
+- Patient.link.other
+- Patient.link.type
+:bindings:
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/contact-point-system
+  :path: telecom.system
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/contact-point-use
+  :path: telecom.use
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/administrative-gender
+  :path: gender
+- :type: CodeableConcept
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/marital-status
+  :path: maritalStatus
+- :type: CodeableConcept
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype
+  :path: contact.relationship
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/administrative-gender
+  :path: contact.gender
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/link-type
+  :path: link.type
+:references:
+- :path: Patient.contact.organization
+  :profiles:
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-organization
+- :path: Patient.generalPractitioner
+  :profiles:
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-practitioner
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-practitionerrole
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-organization
+- :path: Patient.managingOrganization
+  :profiles:
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-organization
+- :path: Patient.link.other
+  :profiles:
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-patient
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-relatedperson
+:tests:
+- :id: ph_ereferral_v010_patient_identifier_search_test
+  :file_name: patient_identifier_search_test.rb
+- :id: ph_ereferral_v010_patient_name_search_test
+  :file_name: patient_name_search_test.rb
+- :id: ph_ereferral_v010_patient_birthdate_search_test
+  :file_name: patient_birthdate_search_test.rb
+- :id: ph_ereferral_v010_patient_gender_search_test
+  :file_name: patient_gender_search_test.rb
+- :id: ph_ereferral_v010_patient_read_test
+  :file_name: patient_read_test.rb
+- :id: ph_ereferral_v010_patient_validation_test
+  :file_name: patient_validation_test.rb
+- :id: ph_ereferral_v010_patient_must_support_test
+  :file_name: patient_must_support_test.rb
+:id: ph_ereferral_v010_patient
+:file_name: patient_group.rb
+:delayed_references: []

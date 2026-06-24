@@ -1,0 +1,320 @@
+---
+:name: ereferral_service_request
+:class_name: EreferralServiceRequestSequence
+:version: v0.1.0
+:reformatted_version: v010
+:resource: ServiceRequest
+:profile_url: https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-service-request
+:profile_name: EReferral ServiceRequest
+:profile_version: 0.1.0
+:title: EReferral ServiceRequest
+:short_description: Verify support for the server capabilities required by the EReferral
+  ServiceRequest.
+:interactions:
+- :code: read
+  :expectation: SHALL
+- :code: search-type
+  :expectation: SHALL
+:operations: []
+:searches:
+- :names:
+  - patient
+  :expectation: SHALL
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+- :names:
+  - status
+  :expectation: SHALL
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+- :names:
+  - intent
+  :expectation: MAY
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+- :names:
+  - category
+  :expectation: MAY
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+- :names:
+  - authored
+  :expectation: SHOULD
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+- :names:
+  - requester
+  :expectation: SHOULD
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+:search_definitions:
+  :patient:
+    :paths:
+    - subject
+    :full_paths:
+    - ServiceRequest.subject
+    :comparators: {}
+    :values: []
+    :type: Reference
+    :contains_multiple: false
+    :target_resource: Patient
+  :status:
+    :paths:
+    - status
+    :full_paths:
+    - ServiceRequest.status
+    :comparators: {}
+    :values:
+    - draft
+    - active
+    - on-hold
+    - revoked
+    - completed
+    - entered-in-error
+    - unknown
+    :type: code
+    :contains_multiple: false
+  :intent:
+    :paths:
+    - intent
+    :full_paths:
+    - ServiceRequest.intent
+    :comparators: {}
+    :values: []
+    :type: code
+    :contains_multiple: false
+  :category:
+    :paths:
+    - category
+    :full_paths:
+    - ServiceRequest.category
+    :comparators: {}
+    :values:
+    - '73770003'
+    - '440655000'
+    :type: CodeableConcept
+    :contains_multiple: true
+  :authored:
+    :paths:
+    - authoredOn
+    :full_paths:
+    - ServiceRequest.authoredOn
+    :comparators:
+      :eq: MAY
+      :ne: MAY
+      :gt: MAY
+      :ge: MAY
+      :lt: MAY
+      :le: MAY
+      :sa: MAY
+      :eb: MAY
+      :ap: MAY
+    :values: []
+    :type: dateTime
+    :contains_multiple: false
+  :requester:
+    :paths:
+    - requester
+    :full_paths:
+    - ServiceRequest.requester
+    :comparators: {}
+    :values: []
+    :type: Reference
+    :contains_multiple: false
+    :target_resource: Practitioner
+:include_params: []
+:revincludes: []
+:required_concepts:
+- category
+- reasonCode
+:must_supports:
+  :extensions: []
+  :slices:
+  - :slice_id: ServiceRequest.occurrence[x]:occurrenceDateTime
+    :slice_name: occurrenceDateTime
+    :path: occurrence[x]
+    :discriminator:
+      :type: type
+      :code: DateTime
+  - :slice_id: ServiceRequest.asNeeded[x]:asNeededCodeableConcept
+    :slice_name: asNeededCodeableConcept
+    :path: asNeeded[x]
+    :discriminator:
+      :type: type
+      :code: CodeableConcept
+  :elements:
+  - :path: status
+  - :path: intent
+    :fixed_value: order
+  - :path: category
+  - :path: code
+  - :path: code.coding
+  - :path: code.text
+  - :path: orderDetail
+  - :path: orderDetail.coding
+  - :path: orderDetail.text
+  - :path: subject
+    :types:
+    - Reference
+    :target_profiles:
+    - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-patient
+  - :path: encounter
+    :types:
+    - Reference
+    :target_profiles:
+    - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-encounter
+  - :path: occurrence[x]
+  - :path: asNeeded[x]:asNeededCodeableConcept.coding
+  - :path: asNeeded[x]:asNeededCodeableConcept.text
+  - :path: authoredOn
+  - :path: requester
+    :types:
+    - Reference
+    :target_profiles:
+    - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-practitioner-role
+  - :path: performerType
+  - :path: performerType.coding
+  - :path: performerType.text
+  - :path: performer
+    :types:
+    - Reference
+  - :path: locationCode
+  - :path: locationCode.coding
+  - :path: locationCode.text
+  - :path: reasonCode
+  - :path: reasonCode.coding
+  - :path: reasonCode.text
+  - :path: reasonReference
+    :types:
+    - Reference
+  - :path: supportingInfo
+    :types:
+    - Reference
+  - :path: bodySite
+  - :path: bodySite.coding
+  - :path: bodySite.text
+  - :path: note
+  - :path: relevantHistory
+    :types:
+    - Reference
+    :target_profiles:
+    - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-provenance
+:mandatory_elements:
+- ServiceRequest.status
+- ServiceRequest.intent
+- ServiceRequest.subject
+- ServiceRequest.requester
+:bindings:
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/request-status
+  :path: status
+- :type: CodeableConcept
+  :strength: required
+  :system: https://www.fhir.doh.gov.ph/pheref/ValueSet/referral-category
+  :path: category
+- :type: code
+  :strength: required
+  :system: http://hl7.org/fhir/ValueSet/request-priority
+  :path: priority
+- :type: CodeableConcept
+  :strength: required
+  :system: https://www.fhir.doh.gov.ph/pheref/ValueSet/reason-for-referral-service-type
+  :path: reasonCode
+:references:
+- :path: ServiceRequest.basedOn
+  :profiles:
+  - http://hl7.org/fhir/StructureDefinition/CarePlan|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/ServiceRequest|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/MedicationRequest|4.0.1
+- :path: ServiceRequest.replaces
+  :profiles:
+  - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-service-request
+  :resource_types:
+  - ServiceRequest
+- :path: ServiceRequest.subject
+  :profiles:
+  - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-patient
+  :resource_types:
+  - Patient
+- :path: ServiceRequest.encounter
+  :profiles:
+  - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-encounter
+  :resource_types:
+  - Encounter
+- :path: ServiceRequest.requester
+  :profiles:
+  - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-practitioner-role
+  :resource_types:
+  - PractitionerRole
+- :path: ServiceRequest.performer
+  :profiles:
+  - https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-organization
+  - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-practitioner-role
+  :resource_types:
+  - PractitionerRole
+- :path: ServiceRequest.locationReference
+  :profiles:
+  - http://hl7.org/fhir/StructureDefinition/Location|4.0.1
+- :path: ServiceRequest.reasonReference
+  :profiles:
+  - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-condition
+  - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-observation
+  :resource_types:
+  - Condition
+  - Observation
+- :path: ServiceRequest.insurance
+  :profiles:
+  - http://hl7.org/fhir/StructureDefinition/Coverage|4.0.1
+  - http://hl7.org/fhir/StructureDefinition/ClaimResponse|4.0.1
+- :path: ServiceRequest.supportingInfo
+  :profiles:
+  - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-condition
+  - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-observation
+  - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-procedure
+  - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-medication-administration
+  - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-immunization
+  :resource_types:
+  - Condition
+  - Observation
+  - Procedure
+  - MedicationAdministration
+  - Immunization
+- :path: ServiceRequest.specimen
+  :profiles:
+  - http://hl7.org/fhir/StructureDefinition/Specimen|4.0.1
+- :path: ServiceRequest.relevantHistory
+  :profiles:
+  - https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-provenance
+  :resource_types:
+  - Provenance
+:tests:
+- :id: ph_ereferral_v010_service_request_patient_search_test
+  :file_name: service_request_patient_search_test.rb
+- :id: ph_ereferral_v010_service_request_status_search_test
+  :file_name: service_request_status_search_test.rb
+- :id: ph_ereferral_v010_service_request_intent_search_test
+  :file_name: service_request_intent_search_test.rb
+- :id: ph_ereferral_v010_service_request_category_search_test
+  :file_name: service_request_category_search_test.rb
+- :id: ph_ereferral_v010_service_request_authored_search_test
+  :file_name: service_request_authored_search_test.rb
+- :id: ph_ereferral_v010_service_request_requester_search_test
+  :file_name: service_request_requester_search_test.rb
+- :id: ph_ereferral_v010_service_request_read_test
+  :file_name: service_request_read_test.rb
+- :id: ph_ereferral_v010_service_request_validation_test
+  :file_name: service_request_validation_test.rb
+- :id: ph_ereferral_v010_service_request_must_support_test
+  :file_name: service_request_must_support_test.rb
+- :id: ph_ereferral_v010_service_request_reference_resolution_test
+  :file_name: service_request_reference_resolution_test.rb
+:id: ph_ereferral_v010_service_request
+:file_name: service_request_group.rb
+:delayed_references:
+- :path: requester
+  :resources:
+  - PractitionerRole
+- :path: performer
+  :resources:
+  - PractitionerRole
