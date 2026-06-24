@@ -10,12 +10,6 @@ module PHeReferralTestKit
       title '(SHALL) Server returns correct Observation resource from Observation read interaction'
       description 'A server SHALL support the Observation read interaction.'
 
-      input :observation_ids,
-            title: 'Observation IDs',
-            description: 'Comma separated list of observation IDs that in sum contain all MUST SUPPORT elements',
-            default: '',
-            optional: true
-
       id :ph_ereferral_v010_ereferral_observation_read_test
 
       def self.demodata

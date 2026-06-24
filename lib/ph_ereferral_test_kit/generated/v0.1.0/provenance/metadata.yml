@@ -18,17 +18,17 @@
 :operations: []
 :searches:
 - :names:
+  - patient
+  :expectation: SHOULD
+  :names_not_must_support_or_mandatory: []
+  :must_support_or_mandatory: true
+- :names:
   - target
   :expectation: SHALL
   :names_not_must_support_or_mandatory: []
   :must_support_or_mandatory: true
 - :names:
   - recorded
-  :expectation: SHOULD
-  :names_not_must_support_or_mandatory: []
-  :must_support_or_mandatory: true
-- :names:
-  - patient
   :expectation: SHOULD
   :names_not_must_support_or_mandatory: []
   :must_support_or_mandatory: true
@@ -251,12 +251,12 @@
   - http://hl7.org/fhir/StructureDefinition/Device|4.0.1
   - http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
 :tests:
+- :id: ph_ereferral_v010_provenance_patient_search_test
+  :file_name: provenance_patient_search_test.rb
 - :id: ph_ereferral_v010_provenance_target_search_test
   :file_name: provenance_target_search_test.rb
 - :id: ph_ereferral_v010_provenance_recorded_search_test
   :file_name: provenance_recorded_search_test.rb
-- :id: ph_ereferral_v010_provenance_patient_search_test
-  :file_name: provenance_patient_search_test.rb
 - :id: ph_ereferral_v010_provenance_agent_search_test
   :file_name: provenance_agent_search_test.rb
 - :id: ph_ereferral_v010_provenance_read_test

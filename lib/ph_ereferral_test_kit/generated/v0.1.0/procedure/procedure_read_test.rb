@@ -10,12 +10,6 @@ module PHeReferralTestKit
       title '(SHALL) Server returns correct Procedure resource from Procedure read interaction'
       description 'A server SHALL support the Procedure read interaction.'
 
-      input :procedure_ids,
-            title: 'Procedure IDs',
-            description: 'Comma separated list of procedure IDs that in sum contain all MUST SUPPORT elements',
-            default: '',
-            optional: true
-
       id :ph_ereferral_v010_procedure_read_test
 
       def self.demodata

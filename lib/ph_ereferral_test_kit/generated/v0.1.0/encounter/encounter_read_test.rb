@@ -10,12 +10,6 @@ module PHeReferralTestKit
       title '(SHALL) Server returns correct Encounter resource from Encounter read interaction'
       description 'A server SHALL support the Encounter read interaction.'
 
-      input :encounter_ids,
-            title: 'Encounter IDs',
-            description: 'Comma separated list of encounter IDs that in sum contain all MUST SUPPORT elements',
-            default: '',
-            optional: true
-
       id :ph_ereferral_v010_encounter_read_test
 
       def self.demodata

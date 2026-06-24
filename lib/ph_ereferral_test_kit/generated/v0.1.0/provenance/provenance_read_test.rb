@@ -10,12 +10,6 @@ module PHeReferralTestKit
       title '(SHALL) Server returns correct Provenance resource from Provenance read interaction'
       description 'A server SHALL support the Provenance read interaction.'
 
-      input :provenance_ids,
-            title: 'Provenance IDs',
-            description: 'Comma separated list of provenance IDs that in sum contain all MUST SUPPORT elements',
-            default: '',
-            optional: true
-
       id :ph_ereferral_v010_provenance_read_test
 
       def self.demodata

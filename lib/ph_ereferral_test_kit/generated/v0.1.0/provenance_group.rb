@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require 'inferno_suite_generator/core/ig_demodata'
+require_relative 'provenance/provenance_patient_search_test'
 require_relative 'provenance/provenance_target_search_test'
 require_relative 'provenance/provenance_recorded_search_test'
-require_relative 'provenance/provenance_patient_search_test'
 require_relative 'provenance/provenance_agent_search_test'
 require_relative 'provenance/provenance_read_test'
 require_relative 'provenance/provenance_validation_test'
@@ -78,9 +78,9 @@ read succeeds.
                                                                           ))
       end
 
+      test from: :ph_ereferral_v010_provenance_patient_search_test
       test from: :ph_ereferral_v010_provenance_target_search_test
       test from: :ph_ereferral_v010_provenance_recorded_search_test
-      test from: :ph_ereferral_v010_provenance_patient_search_test
       test from: :ph_ereferral_v010_provenance_agent_search_test
       test from: :ph_ereferral_v010_provenance_read_test
       test from: :ph_ereferral_v010_provenance_validation_test

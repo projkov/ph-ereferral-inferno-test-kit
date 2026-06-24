@@ -16,14 +16,6 @@ target on the Provenance resource. This test
 will pass if resources are returned and match the search criteria. If
 none are returned, the test is skipped.
 
-Because this is the first search of the sequence, resources in the
-response will be used for subsequent tests.
-
-Additionally, this test will check that GET and POST search methods
-return the same number of results. Search by POST is required by the
-FHIR R4 specification, and these tests interpret search by GET as a
-requirement of PH eReferral v0.1.0.
-
 [PH eReferral Server CapabilityStatement](https://fhir.doh.gov.ph/pheref/CapabilityStatement/ph-ereferral-server)
 
       )
@@ -38,12 +30,8 @@ requirement of PH eReferral v0.1.0.
 
       def self.properties
         @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
-          first_search: true,
-          fixed_value_search: true,
           resource_type: 'Provenance',
-          search_param_names: ['target'],
-          saves_delayed_references: true,
-          test_post_search: true
+          search_param_names: ['target']
         )
       end
 

@@ -1821,17 +1821,17 @@
   :operations: []
   :searches:
   - :names:
+    - patient
+    :expectation: SHOULD
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
     - target
     :expectation: SHALL
     :names_not_must_support_or_mandatory: []
     :must_support_or_mandatory: true
   - :names:
     - recorded
-    :expectation: SHOULD
-    :names_not_must_support_or_mandatory: []
-    :must_support_or_mandatory: true
-  - :names:
-    - patient
     :expectation: SHOULD
     :names_not_must_support_or_mandatory: []
     :must_support_or_mandatory: true

@@ -10,12 +10,6 @@ module PHeReferralTestKit
       title '(SHALL) Server returns correct Condition resource from Condition read interaction'
       description 'A server SHALL support the Condition read interaction.'
 
-      input :condition_ids,
-            title: 'Condition IDs',
-            description: 'Comma separated list of condition IDs that in sum contain all MUST SUPPORT elements',
-            default: '',
-            optional: true
-
       id :ph_ereferral_v010_ereferral_condition_read_test
 
       def self.demodata

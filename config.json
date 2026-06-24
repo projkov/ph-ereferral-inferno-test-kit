@@ -36,12 +36,7 @@
   "constants": {
     "default_fhir_server": "https://cdr.pheref.fhirlab.net/fhir",
     "read_ids.patient": "",
-    "read_ids.practitioner": "",
-    "read_ids.organization": "",
-    "read_ids.practitioner_role": "",
-    "read_ids.service_request": "",
-    "read_ids.encounter": "",
-    "read_ids.task": ""
+    "read_ids.practitioner_role": ""
   },
   "configs": {
     "generic": {
@@ -58,36 +53,9 @@
     },
     "profiles": {
       "https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-patient": {
-        "first_class_profile": "search"
-      },
-      "https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-practitioner": {
-        "first_class_profile": "read"
-      },
-      "https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-organization": {
         "first_class_profile": "read"
       },
       "https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-practitioner-role": {
-        "first_class_profile": "read"
-      },
-      "https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-service-request": {
-        "first_class_profile": "search"
-      },
-      "https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-encounter": {
-        "first_class_profile": "read"
-      },
-      "https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-condition": {
-        "first_class_profile": "read"
-      },
-      "https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-observation": {
-        "first_class_profile": "read"
-      },
-      "https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-procedure": {
-        "first_class_profile": "read"
-      },
-      "https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-task": {
-        "first_class_profile": "search"
-      },
-      "https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-provenance": {
         "first_class_profile": "read"
       }
     },
