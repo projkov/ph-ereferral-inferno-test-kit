@@ -29,4 +29,4 @@ BOX_FHIR_TERMINOLOGY_ENGINE="hybrid"
 BOX_FHIR_TERMINOLOGY_SERVICE_BASE_URL="https://tx.dev.hl7.org.au/fhir"
 BOX_FHIR_TERMINOLOGY_ENGINE_HYBRID_EXTERNAL_TX_SERVER="https://tx.dev.hl7.org.au/fhir"
 
-BOX_INIT_BUNDLE=file:///resources/init-bundles/ph-ereferral-package.json
+BOX_INIT_BUNDLE=file:///resources/init-bundles/ph-core-package.json

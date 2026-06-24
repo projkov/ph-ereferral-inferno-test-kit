@@ -4,7 +4,7 @@ require_relative 'lib/ph_ereferral_test_kit/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'ph_ereferral_test_kit'
-  spec.version       = PHEreferralTestKit::VERSION
+  spec.version       = PHeReferralTestKit::VERSION
   spec.authors       = ['Pavel Rozhkov, Ilya Beda']
   spec.email         = ['pavel.r@beda.software, ilya@beda.software']
   spec.summary       = 'PH eReferral Inferno test kit'

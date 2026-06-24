@@ -7,9 +7,11 @@ services:
       - ./lib/ph_ereferral_test_kit/igs:/output/igs
     entrypoint: >
       sh -c "
-        curl -fsSL -o /tmp/package.tgz http://build.fhir.org/ig/niccoreyes/ph-ereferral/package.tgz &&
-        cp /tmp/package.tgz /output/ig/0.1.0.tgz &&
-        cp /tmp/package.tgz /output/igs/0.1.0.tgz
+        curl -fsSL -o /tmp/ph-core.tgz https://build.fhir.org/ig/UP-Manila-SILab/ph-core/package.tgz &&
+        curl -fsSL -o /tmp/ph-ereferral.tgz http://build.fhir.org/ig/niccoreyes/ph-ereferral/package.tgz &&
+        cp /tmp/ph-core.tgz /output/ig/ph-core.tgz &&
+        cp /tmp/ph-ereferral.tgz /output/ig/0.1.0.tgz &&
+        cp /tmp/ph-ereferral.tgz /output/igs/0.1.0.tgz
       "
 
   inferno:
