@@ -71,6 +71,17 @@
                         "valueCode": "SHALL"
                       }
                     ],
+                    "name": "_id",
+                    "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+                    "type": "token"
+                  },
+                  {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                        "valueCode": "SHALL"
+                      }
+                    ],
                     "name": "identifier",
                     "definition": "http://hl7.org/fhir/SearchParameter/Patient-identifier",
                     "type": "token"

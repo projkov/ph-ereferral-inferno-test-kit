@@ -6,21 +6,34 @@ require 'inferno_suite_generator/utils/helpers'
 
 module PHeReferralTestKit
   module PHeReferralV010
-    class PatientIdentifierSearchTest < Inferno::Test
+    class PatientIdSearchTest < Inferno::Test
       include InfernoSuiteGenerator::SearchTest
 
-      title '(SHALL) Server returns valid results for Patient search by identifier'
+      title '(SHALL) Server returns valid results for Patient search by _id'
       description %(
 A server SHALL support searching by
-identifier on the Patient resource. This test
+_id on the Patient resource. This test
 will pass if resources are returned and match the search criteria. If
 none are returned, the test is skipped.
+
+Because this is the first search of the sequence, resources in the
+response will be used for subsequent tests.
+
+Additionally, this test will check that GET and POST search methods
+return the same number of results. Search by POST is required by the
+FHIR R4 specification, and these tests interpret search by GET as a
+requirement of PH eReferral v0.1.0.
 
 [PH eReferral Server CapabilityStatement](https://fhir.doh.gov.ph/pheref/CapabilityStatement/ph-ereferral-server)
 
       )
 
-      id :ph_ereferral_v010_patient_identifier_search_test
+      id :ph_ereferral_v010_patient__id_search_test
+
+      input :patient_ids,
+            title: 'Patient IDs',
+            description: 'Comma separated list of patient IDs that in sum contain all MUST SUPPORT elements',
+            default: ''
 
       def self.demodata
         @demodata ||= InfernoSuiteGenerator::Generator::IGDemodata.new(
@@ -30,9 +43,11 @@ none are returned, the test is skipped.
 
       def self.properties
         @properties ||= InfernoSuiteGenerator::SearchTestProperties.new(
+          first_search: true,
           resource_type: 'Patient',
-          search_param_names: ['identifier'],
-          token_search_params: ['identifier']
+          search_param_names: ['_id'],
+          test_post_search: true,
+          first_search_for_patient_by_patient_id: true
         )
       end
 

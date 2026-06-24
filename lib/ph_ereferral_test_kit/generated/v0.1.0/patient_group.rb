@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'inferno_suite_generator/core/ig_demodata'
+require_relative 'patient/patient_id_search_test'
 require_relative 'patient/patient_identifier_search_test'
 require_relative 'patient/patient_name_search_test'
 require_relative 'patient/patient_birthdate_search_test'
@@ -28,6 +29,7 @@ This test sequence will first perform each required search associated
 with this resource. This sequence will perform searches with the
 following parameters:
 
+* _id
 * identifier
 
 ### Search Parameters
@@ -77,6 +79,7 @@ read succeeds.
                                                                           ))
       end
 
+      test from: :ph_ereferral_v010_patient__id_search_test
       test from: :ph_ereferral_v010_patient_identifier_search_test
       test from: :ph_ereferral_v010_patient_name_search_test
       test from: :ph_ereferral_v010_patient_birthdate_search_test

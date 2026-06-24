@@ -53,7 +53,7 @@
     },
     "profiles": {
       "https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-patient": {
-        "first_class_profile": "read"
+        "first_class_profile": "search"
       },
       "https://fhir.doh.gov.ph/pheref/StructureDefinition/ereferral-practitioner-role": {
         "first_class_profile": "read"

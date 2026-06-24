@@ -23,6 +23,11 @@
   :operations: []
   :searches:
   - :names:
+    - _id
+    :expectation: SHALL
+    :names_not_must_support_or_mandatory: []
+    :must_support_or_mandatory: true
+  - :names:
     - identifier
     :expectation: SHALL
     :names_not_must_support_or_mandatory:
@@ -44,6 +49,15 @@
     :names_not_must_support_or_mandatory: []
     :must_support_or_mandatory: true
   :search_definitions:
+    :_id:
+      :paths:
+      - id
+      :full_paths:
+      - Patient.id
+      :comparators: {}
+      :values: []
+      :type: http://hl7.org/fhirpath/System.String
+      :contains_multiple: false
     :identifier:
       :paths:
       - identifier
