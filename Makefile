@@ -11,7 +11,7 @@ lint_generated = rubocop -A lib/ph_ereferral_test_kit/
 ig_url = https://build.fhir.org/ig/UP-Manila-SILab/ph-ereferral/package.tgz
 ig_filename = 0.1.0.tgz
 
-.PHONY: setup generate summary new_release tests run pull build up stop down rubocop migrate clean_generated ig_download uploadfig_generate_local
+.PHONY: setup generate tests run pull build up stop down rubocop migrate clean_generated ig_download
 
 setup: pull build migrate
 

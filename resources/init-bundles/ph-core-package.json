@@ -20,6 +20,17 @@
             {
               "name": "package",
               "valueString": "file:///resources/ig/ph-core.tgz"
+            },
+            {
+              "name": "package",
+              "valueString": "file:///resources/ig/0.1.0.tgz"
+            },
+            {
+              "name": "override",
+              "part": [
+                { "name": "from", "valueString": "fhir.ph.core@dev" },
+                { "name": "to",   "valueString": "0.2.0" }
+              ]
             }
           ]
         }

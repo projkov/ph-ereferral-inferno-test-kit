@@ -13,8 +13,6 @@ PATH
   specs:
     ph_ereferral_test_kit (0.0.1)
       inferno_core (>= 1.0.6)
-      smart_app_launch_test_kit (>= 0.4.0)
-      tls_test_kit (~> 0.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -33,7 +31,6 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
-    aes_key_wrap (1.1.0)
     ast (2.4.2)
     base62-rb (0.3.1)
     base64 (0.2.0)
@@ -47,22 +44,14 @@ GEM
       parser (>= 2.4)
       smart_properties
     bigdecimal (3.1.9)
-    bindata (2.5.1)
     blueprinter (0.25.2)
     builder (3.3.0)
     byebug (11.1.3)
     coderay (1.1.3)
     concurrent-ruby (1.3.4)
     connection_pool (2.5.0)
-    crack (1.0.0)
-      bigdecimal
-      rexml
     crass (1.0.6)
     csv (3.3.5)
-    database_cleaner (1.99.0)
-    database_cleaner-sequel (1.99.0)
-      database_cleaner (~> 1.99.0)
-      sequel
     date (3.4.1)
     date_time_precision (0.8.1)
     debug (1.10.0)
@@ -92,8 +81,6 @@ GEM
     dry-transformer (1.0.1)
       zeitwerk (~> 2.6)
     erubi (1.13.1)
-    factory_bot (6.5.1)
-      activesupport (>= 6.1.0)
     faraday (1.10.4)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
@@ -160,12 +147,9 @@ GEM
       dry-core (~> 1.0, < 2)
       dry-transformer (~> 1.0, < 2)
     hansi (0.2.1)
-    hashdiff (1.1.2)
     http-accept (1.7.0)
     http-cookie (1.0.8)
       domain_name (~> 0.5)
-    httpclient (2.9.0)
-      mutex_m
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     inferno_core (1.0.6)
@@ -207,11 +191,6 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.9.1)
-    json-jwt (1.15.3.1)
-      activesupport (>= 4.2)
-      aes_key_wrap
-      bindata
-      httpclient
     jsonpath (1.1.5)
       multi_json
     jwt (2.10.1)
@@ -354,11 +333,6 @@ GEM
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
       redis-client (>= 0.19.0)
-    smart_app_launch_test_kit (0.4.6)
-      inferno_core (>= 0.4.2)
-      json-jwt (~> 1.15.3)
-      jwt (~> 2.6)
-      tls_test_kit (~> 0.2.0)
     smart_properties (1.17.0)
     sqlite3 (1.7.3-aarch64-linux)
     sqlite3 (1.7.3-arm-linux)
@@ -373,8 +347,6 @@ GEM
     strings-ansi (0.2.0)
     thor (1.4.0)
     tilt (2.6.0)
-    tls_test_kit (0.2.3)
-      inferno_core (>= 0.4.2)
     tty-color (0.6.0)
     tty-markdown (0.7.2)
       kramdown (>= 1.16.2, < 3.0)
@@ -388,10 +360,6 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.6.0)
     unicode_utils (1.4.0)
-    webmock (3.24.0)
-      addressable (>= 2.8.0)
-      crack (>= 0.3.2)
-      hashdiff (>= 0.4.0, < 2.0.0)
     zeitwerk (2.7.1)
 
 PLATFORMS
@@ -407,9 +375,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  database_cleaner-sequel (~> 1.8)
   debug
-  factory_bot (~> 6.1)
   inferno_suite_generator!
   pg (~> 1.5)
   ph_ereferral_test_kit!
@@ -417,7 +383,6 @@ DEPENDENCIES
   rubocop (~> 1.63.2)
   rubocop-erb (~> 0.3.0)
   sqlite3 (~> 1.4)
-  webmock (~> 3.11)
 
 RUBY VERSION
    ruby 3.3.6p108
